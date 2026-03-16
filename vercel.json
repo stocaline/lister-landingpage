@@ -1,0 +1,9 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/lister_landing.html"
+    }
+  ],
+  "cleanUrls": true
+}
