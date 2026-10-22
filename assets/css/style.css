@@ -235,7 +235,9 @@ kbd {
   background: var(--slab); padding: var(--section) var(--margin);
   display: grid; grid-template-columns: 5fr 7fr; gap: clamp(2rem, 5vw, 5rem); align-items: start;
 }
+.claude > * { min-width: 0; }
 .claude-left { display: grid; gap: 1.75rem; }
+.claude-install { overflow-wrap: anywhere; }
 .claude-left > p { max-width: 46ch; }
 .claude-asks { display: grid; gap: 8px; justify-items: start; }
 .ask {
@@ -245,9 +247,16 @@ kbd {
 .ask:hover { color: var(--cream); }
 .ask:active { transform: scale(0.98); }
 .ask[aria-pressed="true"] { background: var(--violet); color: var(--ground); }
+.install { display: grid; gap: 10px; }
+.install-label { font-weight: 600; }
+.install-box { display: flex; align-items: stretch; background: var(--ground); max-width: 100%; }
+.install-box pre { margin: 0; flex: 1; min-width: 0; overflow-x: auto; padding: 16px 18px; color: var(--violet-ink); font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 1rem; }
+.install-copy { flex: none; padding: 0 20px; background: var(--violet); color: var(--ground); font-weight: 600; transition: background-color 180ms var(--ease), transform 140ms var(--ease); }
+.install-copy:hover { background: var(--violet-ink); }
+.install-copy:active { transform: scale(0.97); }
 .claude-install { color: var(--muted); }
 .claude-install a { color: var(--violet-ink); }
-.claude-install code, .term code, .term-out { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; }
+code, pre, .term-out { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; }
 .claude-install code { font-size: 0.95em; color: var(--cream); }
 .claude-right { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 16px; align-items: start; }
 .term { background: var(--rail); border: 1px solid var(--line); border-radius: 8px; padding: 28px; display: grid; gap: 18px; font-size: 1.125rem; }
@@ -397,6 +406,9 @@ kbd {
   .claude { grid-template-columns: 1fr; padding: 6rem 20px; }
   .claude-right { grid-template-columns: 1fr; }
   .ask { width: 100%; }
+  .install-box { flex-direction: column; }
+  .install-box pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 0.9375rem; }
+  .install-copy { min-height: 48px; }
   .about { padding: 6rem 10px; }
   .about-panel { grid-template-columns: 1fr; min-height: 0; }
   .about-left { display: contents; }

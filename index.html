@@ -173,7 +173,14 @@
       <button class="ask" aria-pressed="false" data-ask="1">Marca a tela de checkout como feita</button>
       <button class="ask" aria-pressed="false" data-ask="2">O que falta no quadro Casa?</button>
     </div>
-    <p class="claude-install small reveal">Para instalar, copie a pasta <a href="https://github.com/stocaline/lister/tree/master/claude-skill/lister">claude-skill/lister</a> do repositório para <code>~/.claude/skills/</code>.</p>
+    <div class="install reveal">
+      <p class="install-label">Para instalar, rode dentro do Claude Code:</p>
+      <div class="install-box">
+        <pre><code data-install-cmd>/plugin install lister --marketplace stocaline/lister</code></pre>
+        <button class="install-copy" data-copy>Copiar</button>
+      </div>
+      <p class="claude-install small">Precisa de Python 3. Em versões anteriores à 2.1.275, use <code>/plugin marketplace add stocaline/lister</code> e depois <code>/plugin install lister@lister</code>. <a href="https://github.com/stocaline/lister/tree/master/claude-skill/lister">Ver o código da skill</a>.</p>
+    </div>
   </div>
 
   <div class="claude-right reveal" data-ui>

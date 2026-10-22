@@ -167,4 +167,17 @@ const showAsk = (i) => {
   term.classList.remove('typed'); void term.offsetWidth; term.classList.add('typed');
 };
 $$('[data-ask]').forEach((b) => b.addEventListener('click', () => showAsk(+b.dataset.ask)));
+
+// Copy the install command.
+$('[data-copy]').addEventListener('click', async (e) => {
+  const btn = e.currentTarget;
+  try {
+    await navigator.clipboard.writeText($('[data-install-cmd]').textContent);
+    btn.textContent = 'Copiado';
+  } catch {
+    getSelection().selectAllChildren($('[data-install-cmd]'));
+    btn.textContent = 'Selecionado';
+  }
+  setTimeout(() => { btn.textContent = 'Copiar'; }, 1800);
+});
 showAsk(0);
