@@ -1,732 +1,259 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="pt-BR">
-
+<html lang="pt-BR">
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Lister | To-do list ágil. Kanban estratégico.</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Outfit:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-
-    <!-- External CSS Dependencies -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-
-    <script src="assets/js/tailwind-config.js"></script>
-
-    <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lister · Cada minuto conta</title>
+  <meta name="description" content="Kanban local para Windows com cronômetro em cada tarefa. Grátis, sem conta, 3,5 MB.">
+  <meta name="theme-color" content="#141311">
+  <link rel="icon" href="assets/imgs/lister.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add('js')</script>
 </head>
+<body>
 
-<body class="antialiased min-h-screen selection:bg-indigo-500 selection:text-white relative">
-    <div class="max-w-[1440px] mx-auto bg-surface-white relative shadow-[0_0_50px_-12px_rgba(0,0,0,0.1)]">
-
-        <!-- HEADER -->
-        <header class="relative z-50 border-b border-slate-200 bg-white/80 backdrop-blur-md sticky top-0" id="navbar">
-            <div class="flex justify-between items-center px-8 py-5">
-                <div class="flex items-center gap-3">
-                    <img src="assets/imgs/logo.png" alt="Lister Logo" class="w-10 h-10 object-contain drop-shadow-sm">
-                    <span class="font-display font-bold tracking-tight text-xl text-slate-900">Lister<span
-                            class="text-indigo-600 font-light">.App</span></span>
-                </div>
-                <nav class="hidden md:flex items-center gap-10 text-sm font-medium text-slate-500">
-                    <a href="#features" class="hover:text-indigo-600 transition-colors">Funcionalidades</a>
-                    <a href="#timetracking" class="hover:text-indigo-600 transition-colors">Tracking</a>
-                    <a href="#plataformas" class="hover:text-indigo-600 transition-colors">Plataformas</a>
-                    <a href="#authority" class="hover:text-indigo-600 transition-colors">A Ideia</a>
-                </nav>
-                <div class="flex items-center gap-3">
-                    <a href="https://lister-one.vercel.app/" target="_blank"
-                        class="hidden lg:flex items-center gap-2 px-4 py-2 text-slate-600 hover:text-indigo-600 font-medium text-sm transition-colors rounded-lg hover:bg-slate-50">
-                        <iconify-icon icon="solar:browser-bold-duotone" class="text-lg"></iconify-icon>
-                        Acessar Web
-                    </a>
-                    <a href="assets/app/lister_0.2.0_x64-setup.exe" download
-                        class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-900 text-white font-medium text-sm hover:bg-indigo-600 transition-colors btn-glow">
-                        <iconify-icon icon="solar:monitor-smartphone-bold-duotone" class="text-lg"></iconify-icon>
-                        Baixar Desktop
-                    </a>
-                </div>
-            </div>
-        </header>
-
-        <!-- HERO SECTION -->
-        <section
-            class="relative z-10 min-h-[85vh] flex flex-col justify-center border-b border-slate-200 overflow-hidden mesh-bg">
-            <div class="absolute top-0 right-0 w-full h-full overflow-hidden pointer-events-none">
-                <!-- Decorative Blobs -->
-                <div
-                    class="absolute top-20 right-20 w-72 h-72 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob">
-                </div>
-                <div
-                    class="absolute top-40 right-40 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000">
-                </div>
-                <div
-                    class="absolute -bottom-8 left-20 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000">
-                </div>
-                <!-- Grid Overlay -->
-                <div class="absolute inset-0 bg-dots opacity-40"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 relative px-8 md:px-16 items-center">
-                <!-- Text Column -->
-                <div class="col-span-12 md:col-span-7 flex flex-col justify-center py-20">
-                    <div
-                        class="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100 w-max reveal delay-100">
-                        <iconify-icon icon="solar:rocket-bold-duotone" class="text-indigo-600"></iconify-icon>
-                        <span class="text-xs font-semibold uppercase tracking-wider text-indigo-700">O Ecossistema
-                            Definitivo</span>
-                    </div>
-
-                    <h1
-                        class="font-display text-5xl md:text-7xl font-bold tracking-tight text-slate-900 leading-[1.1] mb-8 z-20">
-                        <span class="block reveal delay-100">To-do list <span
-                                class="text-indigo-600">ágil.</span></span>
-                        <span class="block reveal delay-200">Kanban <span
-                                class="text-indigo-600">estratégico.</span></span>
-                    </h1>
-
-                    <p class="text-lg md:text-xl text-slate-600 max-w-xl leading-relaxed reveal delay-300 font-normal">
-                        Organize sua rotina com uma UI de alta performance. Gerencie múltiplos contextos, rastreie o
-                        tempo das tarefas e transforme atividades diárias em metas concretas, seja no Web ou Desktop.
-                    </p>
-
-                    <div class="mt-10 flex flex-wrap gap-5 reveal delay-500">
-                        <a href="https://lister-one.vercel.app/" target="_blank"
-                            class="px-8 py-4 bg-indigo-600 text-white rounded-xl font-medium shadow-lg shadow-indigo-600/30 hover:-translate-y-1 hover:shadow-indigo-600/50 transition-all flex items-center gap-2">
-                            Acessar via Web
-                            <iconify-icon icon="solar:browser-bold-duotone" class="text-xl"></iconify-icon>
-                        </a>
-                        <a href="assets/app/lister_0.2.0_x64-setup.exe" download
-                            class="px-8 py-4 bg-slate-900 border border-slate-800 text-white rounded-xl font-medium shadow-lg hover:-translate-y-1 hover:bg-slate-800 hover:shadow-slate-900/50 transition-all flex items-center gap-2">
-                            Baixar para Desktop
-                            <iconify-icon icon="solar:monitor-smartphone-bold-duotone" class="text-xl"></iconify-icon>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Visuals Column -->
-                <div class="col-span-12 md:col-span-5 relative hidden md:block">
-                    <div class="relative w-full aspect-square reveal delay-300 animate-float">
-                        <!-- Glass Mockup UI - Lister Board Preview -->
-                        <div
-                            class="absolute inset-4 glass-card rounded-2xl p-6 flex flex-col z-20 border border-white relative overflow-hidden shadow-2xl">
-                            <!-- Board Header -->
-                            <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-200/50">
-                                <div class="flex items-center gap-3">
-                                    <div
-                                        class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-xl">
-                                        <iconify-icon icon="solar:fire-bold-duotone"></iconify-icon>
-                                    </div>
-                                    <div>
-                                        <span class="block text-sm font-bold text-slate-900">Sprint Atual</span>
-                                        <span class="block text-xs font-mono text-slate-500">3 Boards Ativos</span>
-                                    </div>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <div
-                                        class="px-2 py-1 bg-indigo-100 text-indigo-700 text-[10px] font-bold rounded flex items-center gap-1">
-                                        <iconify-icon icon="solar:stopwatch-bold"></iconify-icon> 02:45:00
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Board Columns Layout -->
-                            <div class="flex gap-4 flex-1">
-                                <!-- Col 1 -->
-                                <div
-                                    class="flex-1 bg-slate-50/80 rounded-xl p-3 border border-slate-100/50 flex flex-col gap-3">
-                                    <div class="flex items-center justify-between mb-1">
-                                        <span class="text-xs font-bold text-slate-700">To Do</span>
-                                        <span
-                                            class="text-[10px] bg-slate-200 text-slate-600 px-1.5 rounded-full">3</span>
-                                    </div>
-                                    <!-- Card -->
-                                    <div class="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
-                                        <div class="flex justify-between items-start mb-2">
-                                            <span class="text-xs font-medium text-slate-800 leading-tight">Configurar
-                                                Time Tracking</span>
-                                            <span class="w-2 h-2 rounded-full bg-red-500"></span>
-                                        </div>
-                                        <div class="flex gap-1 mt-3">
-                                            <span
-                                                class="text-[9px] px-1.5 py-0.5 bg-indigo-50 text-indigo-600 rounded">Dev</span>
-                                        </div>
-                                    </div>
-                                    <!-- Card Placeholder -->
-                                    <div class="bg-white p-3 rounded-lg shadow-sm border border-slate-100 opacity-60">
-                                        <div class="h-3 w-3/4 bg-slate-200 rounded mb-2"></div>
-                                        <div class="h-3 w-1/2 bg-slate-200 rounded"></div>
-                                    </div>
-                                </div>
-
-                                <!-- Col 2 -->
-                                <div
-                                    class="flex-1 bg-slate-50/80 rounded-xl p-3 border border-slate-100/50 flex flex-col gap-3">
-                                    <div class="flex items-center justify-between mb-1">
-                                        <span class="text-xs font-bold text-slate-700">In Progress</span>
-                                        <span
-                                            class="text-[10px] bg-slate-200 text-slate-600 px-1.5 rounded-full">1</span>
-                                    </div>
-                                    <!-- ACTIVE Card with Time Tracking -->
-                                    <div
-                                        class="bg-indigo-600 text-white p-3 rounded-lg shadow-lg border border-indigo-500 relative overflow-hidden group hover:scale-[1.02] transition-transform cursor-pointer">
-                                        <div
-                                            class="absolute top-0 right-0 w-16 h-16 bg-white/10 rounded-full blur-xl transform translate-x-4 -translate-y-4">
-                                        </div>
-                                        <div class="flex justify-between items-start mb-2 relative z-10">
-                                            <span class="text-xs font-medium leading-tight">Implementar High Performance
-                                                UI</span>
-                                        </div>
-                                        <div class="flex items-center justify-between mt-3 relative z-10">
-                                            <div class="flex gap-1">
-                                                <span class="text-[9px] px-1.5 py-0.5 bg-white/20 rounded">Design</span>
-                                            </div>
-                                            <!-- Time tracking badge -->
-                                            <div
-                                                class="flex items-center gap-1 text-[10px] font-mono bg-indigo-800/50 px-1.5 py-0.5 rounded shadow-inner">
-                                                <iconify-icon icon="solar:playback-circle-bold"
-                                                    class="text-green-400 animate-pulse"></iconify-icon>
-                                                01:12:45
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Background Accent Card -->
-                        <div
-                            class="absolute -right-4 -bottom-4 w-64 h-64 bg-slate-900 rounded-2xl z-10 rotate-3 opacity-90 hover:rotate-6 transition-transform duration-500">
-                        </div>
-                        <!-- Secondary accent behind -->
-                        <div
-                            class="absolute -left-2 -top-2 w-48 h-48 bg-indigo-600 rounded-2xl z-10 -rotate-6 opacity-30 blur-sm">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FEATURES SECTION -->
-        <section id="features" class="relative z-10 bg-white py-24 px-8 md:px-16 border-b border-slate-200">
-            <div class="max-w-7xl mx-auto">
-                <div class="mb-16 md:text-center reveal">
-                    <span
-                        class="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100 text-xs font-semibold uppercase tracking-wider text-indigo-700">
-                        <iconify-icon icon="solar:star-bold-duotone" class="text-indigo-600"></iconify-icon>
-                        Diferenciais
-                    </span>
-                    <h2 class="text-4xl md:text-5xl font-display font-bold text-slate-900 tracking-tight">O poder de
-                        focar no que importa</h2>
-                    <p class="text-slate-500 mt-6 max-w-2xl mx-auto text-lg leading-relaxed">Criamos ferramentas sob
-                        medida para unir a satisfação de checar tarefas feitas ao poder visual estratégico do Kanban.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                    <!-- Feature 1: Multi-Board -->
-                    <div
-                        class="p-10 rounded-3xl bg-white border border-slate-200 shadow-sm hover-card reveal delay-100 relative overflow-hidden group">
-                        <div
-                            class="absolute -right-4 -top-8 w-40 h-40 bg-orange-500/10 rounded-full blur-2xl group-hover:bg-orange-500/20 transition-colors">
-                        </div>
-                        <div
-                            class="w-14 h-14 bg-orange-50 rounded-2xl shadow-sm border border-orange-100 flex items-center justify-center text-orange-600 text-3xl mb-8 relative z-10">
-                            <iconify-icon icon="solar:layers-bold-duotone"></iconify-icon>
-                        </div>
-                        <h3 class="text-2xl font-display font-bold text-slate-900 mb-3 relative z-10">Organização
-                            Multi-Board</h3>
-                        <p class="text-slate-600 leading-relaxed font-normal relative z-10">
-                            Separe sua vida sem perder o contexto. Gerenciamento total de múltiplos cenários produtivos
-                            (Casa, Trabalho, Projetos) de forma visual, independente e à distância de uma aba.
-                        </p>
-                    </div>
-
-                    <!-- Feature 2: Alta Performance -->
-                    <div
-                        class="p-10 rounded-3xl bg-white border border-slate-200 shadow-sm hover-card reveal delay-200 relative overflow-hidden group">
-                        <div
-                            class="absolute -right-4 -top-8 w-40 h-40 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-colors">
-                        </div>
-                        <div
-                            class="w-14 h-14 bg-emerald-50 rounded-2xl shadow-sm border border-emerald-100 flex items-center justify-center text-emerald-600 text-3xl mb-8 relative z-10">
-                            <iconify-icon icon="solar:bolt-bold-duotone"></iconify-icon>
-                        </div>
-                        <h3 class="text-2xl font-display font-bold text-slate-900 mb-3 relative z-10">UI de Alta
-                            Performance</h3>
-                        <p class="text-slate-600 leading-relaxed font-normal relative z-10">
-                            Uma interface moderna, veloz e responsiva. Desenvolvida sob o clean light-theme, trazendo
-                            boards ágeis, cards detalhados com tags de prioridade e suporte avançado para subtasks.
-                        </p>
-                    </div>
-
-                    <!-- Feature 3: Customização -->
-                    <div
-                        class="p-10 rounded-3xl bg-slate-900 text-white shadow-xl hover-card reveal delay-300 relative overflow-hidden group">
-                        <!-- Dark background blob -->
-                        <div
-                            class="absolute top-0 right-0 w-48 h-48 bg-indigo-500 rounded-full mix-blend-screen filter blur-[60px] opacity-20 group-hover:opacity-40 transition-opacity">
-                        </div>
-                        <div
-                            class="w-14 h-14 bg-slate-800 rounded-2xl border border-slate-700 flex items-center justify-center text-white text-3xl mb-8 relative z-10">
-                            <iconify-icon icon="solar:tuning-square-2-bold-duotone"></iconify-icon>
-                        </div>
-                        <h3 class="text-2xl font-display font-bold text-white mb-3 relative z-10">Customização Total
-                        </h3>
-                        <p class="text-slate-400 leading-relaxed font-normal relative z-10">
-                            Nada de processos rígidos. Adapte suas colunas e defina fluxos de trabalho que espelhem a
-                            sua realidade: mapeie do Backlog ao To-Do e até seus status de Ajustes.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <!-- Feature 4: Subtarefas -->
-                    <div
-                        class="p-10 rounded-3xl bg-white border border-slate-200 shadow-sm hover-card reveal delay-100 relative overflow-hidden group">
-                        <div
-                            class="absolute -right-4 -top-8 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-colors">
-                        </div>
-                        <div
-                            class="w-14 h-14 bg-blue-50 rounded-2xl shadow-sm border border-blue-100 flex items-center justify-center text-blue-600 text-3xl mb-8 relative z-10">
-                            <iconify-icon icon="solar:checklist-minimalistic-bold-duotone"></iconify-icon>
-                        </div>
-                        <h3 class="text-2xl font-display font-bold text-slate-900 mb-3 relative z-10">Subtarefas
-                            Hierárquicas</h3>
-                        <p class="text-slate-600 leading-relaxed font-normal relative z-10">
-                            Divida grandes desafios em pequenos passos acionáveis. Acompanhe o progresso de cada etapa
-                            dentro do próprio card central, simplificando entregas complexas sem perder a visão geral.
-                        </p>
-                    </div>
-
-                    <!-- Feature 5: Personalização de Tags -->
-                    <div
-                        class="p-10 rounded-3xl bg-white border border-slate-200 shadow-sm hover-card reveal delay-200 relative overflow-hidden group">
-                        <div
-                            class="absolute -right-4 -top-8 w-40 h-40 bg-pink-500/10 rounded-full blur-2xl group-hover:bg-pink-500/20 transition-colors">
-                        </div>
-                        <div
-                            class="w-14 h-14 bg-pink-50 rounded-2xl shadow-sm border border-pink-100 flex items-center justify-center text-pink-600 text-3xl mb-8 relative z-10">
-                            <iconify-icon icon="solar:tag-bold-duotone"></iconify-icon>
-                        </div>
-                        <h3 class="text-2xl font-display font-bold text-slate-900 mb-3 relative z-10">Tags
-                            Personalizáveis</h3>
-                        <p class="text-slate-600 leading-relaxed font-normal relative z-10">
-                            Classifique seus cards com cores e títulos personalizados. Crie seu próprio sistema visual
-                            para identificar rapidamente prioridades, clientes, setores ou urgências com um simples
-                            olhar.
-                        </p>
-                    </div>
-                </div>
-        </section>
-
-        <!-- TIME TRACKING HERO SECTION -->
-        <section id="timetracking"
-            class="relative z-10 bg-[#fafaf9] py-32 px-8 md:px-16 border-b border-slate-200 overflow-hidden">
-            <!-- Animated Background Elements (Subtle for light theme) -->
-            <div class="absolute inset-0 z-0 overflow-hidden">
-                <div class="absolute top-1/2 left-0 -translate-y-1/2 w-[600px] h-[600px] bg-orange-100/50 rounded-full blur-[100px] animate-pulse"
-                    style="animation-duration: 8s;"></div>
-                <div class="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-blue-100/50 rounded-full blur-[100px] animate-pulse"
-                    style="animation-duration: 10s; animation-delay: 2s;"></div>
-                <!-- Grid Overlay Light -->
-                <div class="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] opacity-50"
-                    style="background-size: 24px 24px;"></div>
-            </div>
-
-            <div class="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <!-- Text Content -->
-                <div class="reveal delay-100">
-                    <div
-                        class="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-white border border-slate-200 text-xs font-semibold uppercase tracking-wider text-orange-600 shadow-sm">
-                        <iconify-icon icon="solar:stopwatch-play-bold-duotone" class="text-lg"></iconify-icon>
-                        Deep Focus
-                    </div>
-
-                    <h2
-                        class="text-4xl md:text-6xl font-display font-bold text-slate-900 tracking-tight mb-8 leading-[1.1]">
-                        Mensure seu foco,<br />
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500">segundo
-                            a segundo.</span>
-                    </h2>
-
-                    <p class="text-slate-600 text-lg md:text-xl leading-relaxed max-w-lg mb-10">
-                        O rastreamento não precisa ser invasivo. Desenvolvemos com foco total para não atrapalhar, mas
-                        estar sempre acessível. Inicie o tempo direto do card e entre no estado de fluxo com nosso
-                        cronômetro circular perfeito.
-                    </p>
-
-                    <ul class="space-y-5">
-                        <li class="flex items-start gap-4 text-slate-700">
-                            <div
-                                class="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center text-orange-500 shrink-0 shadow-sm border border-orange-100">
-                                <iconify-icon icon="solar:mouse-minimalistic-bold-duotone"
-                                    class="text-xl"></iconify-icon>
-                            </div>
-                            <div>
-                                <strong class="text-slate-900 block mb-1">One-click tracking</strong>
-                                Botão rápido flutuante para começar em qualquer card.
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4 text-slate-700">
-                            <div
-                                class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-500 shrink-0 shadow-sm border border-blue-100">
-                                <iconify-icon icon="solar:chart-square-bold-duotone" class="text-xl"></iconify-icon>
-                            </div>
-                            <div>
-                                <strong class="text-slate-900 block mb-1">Estatísticas limpas</strong>
-                                Seu tempo investido centralizado visualmente.
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Interactive Circular Widget Visualization -->
-                <div class="relative flex justify-center lg:justify-end reveal delay-300 h-[500px] items-center w-full">
-
-                    <!-- Wrapper container perfectly centered -->
-                    <div class="relative flex items-center justify-center w-[450px] h-[450px]">
-                        <!-- Outer solid ring -->
-                        <div class="absolute inset-0 border border-[#eff3fc] rounded-full"></div>
-                        <!-- Outer pulsating ring -->
-                        <div
-                            class="absolute inset-0 border border-blue-100 rounded-full animate-[ping_4s_cubic-bezier(0,0,0.2,1)_infinite]">
-                        </div>
-                        <!-- Middle dashed orange ring -->
-                        <div
-                            class="absolute w-[350px] h-[350px] border border-dashed border-orange-200 rounded-full animate-[spin_60s_linear_infinite]">
-                        </div>
-
-                        <!-- Floating Badge 1 (Top Left) -->
-                        <div
-                            class="absolute z-20 top-8 left-8 w-14 h-14 bg-white rounded-2xl shadow-[0_15px_30px_rgba(0,0,0,0.06)] border border-slate-100 flex items-center justify-center text-blue-500 text-2xl hover:-translate-y-1 transition-transform animate-float">
-                            <iconify-icon icon="solar:bolt-bold"></iconify-icon>
-                        </div>
-
-                        <!-- Floating Badge 2 (Bottom Right) -->
-                        <div class="absolute z-20 bottom-8 right-8 w-14 h-14 bg-white rounded-2xl shadow-[0_15px_30px_rgba(0,0,0,0.06)] border border-slate-100 flex items-center justify-center text-orange-500 text-2xl hover:-translate-y-1 transition-transform animate-float"
-                            style="animation-delay: 1.5s;">
-                            <iconify-icon icon="solar:graph-up-bold"></iconify-icon>
-                        </div>
-
-                        <!-- Main inner timer -->
-                        <div class="relative z-10 w-[260px] h-[260px] cursor-pointer group">
-                            <!-- Orange Glow behind -->
-                            <div
-                                class="absolute inset-0 rounded-full bg-orange-400 blur-2xl opacity-40 transition-opacity duration-500 group-hover:opacity-60">
-                            </div>
-
-                            <!-- Dark circle main face -->
-                            <div
-                                class="relative w-full h-full rounded-full bg-[#111827] flex flex-col items-center justify-center ring-4 ring-[#2c1d11] shadow-2xl overflow-hidden transition-transform duration-500 group-hover:scale-[1.02]">
-
-                                <span
-                                    class="text-[10px] font-bold text-slate-400 tracking-[0.25em] uppercase mt-6 mb-2">Deep
-                                    Focus</span>
-
-                                <span
-                                    class="font-display font-bold text-[3.5rem] text-white tracking-wider tabular-nums flex items-center justify-center w-full mb-8 mt-1">
-                                    <span id="tracker-min">42</span><span
-                                        class="animate-[pulse_1.5s_ease-in-out_infinite] opacity-60 mx-1 mb-1">:</span><span
-                                        id="tracker-sec">15</span>
-                                </span>
-
-                                <!-- Pause button -->
-                                <button id="tracker-btn"
-                                    class="w-14 h-14 rounded-full bg-[#f97316] hover:bg-orange-400 text-white flex items-center justify-center text-xl shadow-[0_0_25px_rgba(249,115,22,0.8)] transition-all transform hover:scale-110 mb-2 relative group/btn">
-                                    <span id="tracker-ring"
-                                        class="absolute inset-0 rounded-full border border-orange-300/50 scale-110 opacity-0 group-hover/btn:opacity-100 group-hover/btn:scale-125 transition-all duration-300"></span>
-                                    <iconify-icon id="tracker-icon" icon="solar:pause-bold"></iconify-icon>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </section>
-
-        <!-- DOWNLOAD & WEB SECTION -->
-        <section id="plataformas"
-            class="relative z-10 bg-white py-24 px-8 md:px-16 border-b border-slate-200 overflow-hidden">
-            <div class="max-w-7xl mx-auto relative z-10">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-
-                    <!-- Text Content -->
-                    <div class="reveal delay-100">
-                        <span
-                            class="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-slate-100 border border-slate-200 text-xs font-semibold uppercase tracking-wider text-slate-700">
-                            <iconify-icon icon="solar:devices-bold-duotone"
-                                class="text-slate-500 text-lg"></iconify-icon>
-                            Multi-plataforma
-                        </span>
-
-                        <h2
-                            class="text-4xl md:text-5xl font-display font-bold text-slate-900 tracking-tight mb-6 leading-tight">
-                            Onde você estiver. <br />
-                            <span class="text-indigo-600">No seu ritmo.</span>
-                        </h2>
-
-                        <p class="text-slate-600 text-lg md:text-xl leading-relaxed mb-8 max-w-lg">
-                            Acesse o Lister diretamente no <strong class="text-slate-900">navegador para uma consulta
-                                rápida</strong> durante o dia,
-                            ou instale o app nativo no <strong class="text-slate-900">desktop para foco total</strong>,
-                            garantindo sua produtividade longe das distrações das dezenas de abas abertas no Chrome.
-                        </p>
-
-                        <div class="flex flex-wrap gap-4 mt-8">
-                            <!-- Download Button -->
-                            <a href="assets/app/lister_0.2.0_x64-setup.exe" download
-                                class="px-8 py-3.5 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-semibold transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 flex items-center justify-center gap-2">
-                                <iconify-icon icon="solar:monitor-bold-duotone" class="text-xl"></iconify-icon>
-                                Baixar Desktop App
-                            </a>
-                            <!-- Open Web Button -->
-                            <a href="https://lister-one.vercel.app/" target="_blank"
-                                class="px-8 py-3.5 rounded-2xl bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold transition-all shadow-sm flex items-center justify-center gap-2 group">
-                                <iconify-icon icon="solar:global-bold-duotone"
-                                    class="text-xl text-indigo-500 group-hover:text-indigo-600"></iconify-icon>
-                                Acesso Web
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Visual Side (Cards) -->
-                    <div class="relative reveal delay-300">
-                        <!-- Abstract decorative shape -->
-                        <div
-                            class="absolute inset-0 bg-gradient-to-tr from-indigo-100 to-purple-50 rounded-[3rem] transform rotate-3 scale-105 opacity-50 z-0">
-                        </div>
-
-                        <div class="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
-
-                            <!-- Desktop Version Card -->
-                            <div
-                                class="bg-slate-900 rounded-3xl p-8 shadow-2xl relative overflow-hidden group sm:translate-y-8">
-                                <div
-                                    class="absolute -right-10 -top-10 w-32 h-32 bg-indigo-500/20 rounded-full blur-2xl transition-transform duration-500 group-hover:scale-150">
-                                </div>
-
-                                <div
-                                    class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white mb-6 border border-white/10 backdrop-blur">
-                                    <iconify-icon icon="solar:display-bold-duotone" class="text-2xl"></iconify-icon>
-                                </div>
-
-                                <h3 class="text-2xl font-bold text-white mb-2 font-display tracking-tight">Desktop
-                                    Nativo</h3>
-                                <p class="text-slate-400 text-sm mb-6 leading-relaxed">Foco imersivo. Sem abas chamando
-                                    atenção, voltado apenas pros seus projetos.</p>
-
-                                <!-- OS Icons -->
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-[10px] bg-white/5 flex items-center justify-center text-slate-300 border border-white/10 hover:bg-white/10 hover:text-white transition-colors cursor-pointer"
-                                        title="Mac OS"><iconify-icon icon="mdi:apple" class="text-xl"></iconify-icon>
-                                    </div>
-                                    <div class="w-10 h-10 rounded-[10px] bg-white/5 flex items-center justify-center text-slate-300 border border-white/10 hover:bg-white/10 hover:text-blue-400 transition-colors cursor-pointer"
-                                        title="Windows"><iconify-icon icon="mdi:microsoft-windows"
-                                            class="text-xl"></iconify-icon></div>
-                                    <div class="w-10 h-10 rounded-[10px] bg-white/5 flex items-center justify-center text-slate-300 border border-white/10 hover:bg-white/10 hover:text-orange-400 transition-colors cursor-pointer"
-                                        title="Linux"><iconify-icon icon="mdi:linux" class="text-xl"></iconify-icon>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Web Version Card -->
-                            <div
-                                class="bg-white rounded-3xl p-8 border border-slate-200 shadow-xl relative overflow-hidden group">
-                                <div
-                                    class="absolute -right-10 -top-10 w-32 h-32 bg-orange-500/10 rounded-full blur-2xl transition-transform duration-500 group-hover:scale-150">
-                                </div>
-
-                                <div
-                                    class="w-12 h-12 bg-indigo-50 rounded-full flex items-center justify-center text-indigo-600 border border-indigo-100 mb-6">
-                                    <iconify-icon icon="solar:browser-bold-duotone" class="text-2xl"></iconify-icon>
-                                </div>
-
-                                <h3 class="text-2xl font-bold text-slate-900 mb-2 font-display tracking-tight">Web App
-                                </h3>
-                                <p class="text-slate-500 text-sm mb-6 leading-relaxed">Praticidade universal. Acesse e
-                                    atualize rapidamente em qualquer máquina.</p>
-
-                                <!-- Browser Icons -->
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-[10px] bg-slate-50 flex items-center justify-center text-slate-400 border border-slate-100 hover:bg-white hover:text-red-500 transition-colors cursor-pointer shadow-sm"
-                                        title="Google Chrome"><iconify-icon icon="mdi:google-chrome"
-                                            class="text-xl"></iconify-icon></div>
-                                    <div class="w-10 h-10 rounded-[10px] bg-slate-50 flex items-center justify-center text-slate-400 border border-slate-100 hover:bg-white hover:text-orange-500 transition-colors cursor-pointer shadow-sm"
-                                        title="Firefox"><iconify-icon icon="mdi:firefox" class="text-xl"></iconify-icon>
-                                    </div>
-                                    <div class="w-10 h-10 rounded-[10px] bg-slate-50 flex items-center justify-center text-slate-400 border border-slate-100 hover:bg-white hover:text-blue-500 transition-colors cursor-pointer shadow-sm"
-                                        title="Safari"><iconify-icon icon="mdi:apple-safari"
-                                            class="text-xl"></iconify-icon></div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- AUTHOR SECTION (Built by Dev, For Devs) -->
-        <section id="authority"
-            class="relative z-10 bg-slate-50 py-32 px-8 md:px-16 border-b border-slate-200 overflow-hidden">
-            <!-- Background Elements -->
-            <div class="absolute inset-0 z-0">
-                <div class="absolute top-0 right-0 w-full h-full bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] opacity-50"
-                    style="background-size: 32px 32px;"></div>
-            </div>
-
-            <div class="max-w-4xl mx-auto relative z-10 text-center">
-                <div class="reveal">
-
-                    <div
-                        class="w-20 h-20 mx-auto rounded-2xl bg-white shadow-xl shadow-indigo-100 flex items-center justify-center border border-indigo-50 mb-8 relative transform rotate-3 hover:rotate-6 transition-transform">
-                        <div
-                            class="absolute -inset-2 rounded-2xl border border-indigo-200 animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite] opacity-50">
-                        </div>
-                        <iconify-icon icon="solar:code-square-bold-duotone"
-                            class="text-4xl text-indigo-600"></iconify-icon>
-                    </div>
-
-                    <h2 class="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight mb-12">Built by
-                        Dev <span class="text-slate-300 mx-2">/</span> For Devs</h2>
-
-                    <div
-                        class="bg-white p-10 md:p-14 rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-slate-200 relative overflow-hidden group text-left">
-                        <div
-                            class="absolute -right-20 -top-20 w-64 h-64 bg-indigo-500/5 rounded-full blur-3xl transition-transform duration-700 group-hover:scale-150">
-                        </div>
-                        <div
-                            class="absolute -left-20 -bottom-20 w-64 h-64 bg-orange-500/5 rounded-full blur-3xl transition-transform duration-700 group-hover:scale-150 delay-100">
-                        </div>
-
-                        <!-- Decorative Quotes Icon -->
-                        <div class="absolute top-8 right-10 text-slate-100">
-                            <iconify-icon icon="mingcute:quote-left-fill" class="text-6xl"></iconify-icon>
-                        </div>
-
-                        <div class="relative z-10">
-                            <p class="text-slate-600 text-lg md:text-xl md:leading-relaxed mb-6">
-                                "O Lister nasceu da frustração de ter que escolher entre interfaces pragmáticas e
-                                genéricas, ou sistemas engessados. Como um desenvolvedor <strong
-                                    class="text-slate-900">Full Stack</strong> fanático por desafios complexos, eu senti
-                                a necessidade de construir do zero a ferramenta definitiva que eu mesmo gostaria de
-                                usar."
-                            </p>
-
-                            <p class="text-slate-600 text-lg md:text-xl md:leading-relaxed mb-10">
-                                "A ideia não era só criar um sistema ágil e potente. O objetivo prático sempre foi unir
-                                o rigor técnico na performance com um <strong class="text-indigo-600">toque meticuloso
-                                    de design e harmonia de interiores</strong> no ambiente visual. Uma estrutura limpa
-                                que te acolha ao invés de sobrecarregar, transformando a sua rotina em algo não apenas
-                                produtivo, mas também visualmente empolgante todos os dias."
-                            </p>
-
-                            <div class="flex items-center gap-5 pt-8 border-t border-slate-100">
-                                <img src="assets/imgs/dev.png" alt="Richard de Souza Bercheli"
-                                    class="w-14 h-14 rounded-full shadow-md border-2 border-white object-cover">
-                                <div>
-                                    <strong class="text-slate-900 block text-lg leading-tight mb-1">Richard de Souza
-                                        Bercheli</strong>
-                                    <span class="text-sm font-medium text-slate-500 uppercase tracking-wider">Full Stack
-                                        Developer</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer class="bg-white pt-20 pb-10 px-8 border-t border-slate-200">
-            <div class="max-w-7xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-8 mb-16">
-
-                    <!-- Branding & description -->
-                    <div class="md:col-span-2">
-                        <div class="flex items-center gap-2 mb-6">
-                            <img src="assets/imgs/logo.png" alt="Lister Logo" class="w-8 h-8 object-contain">
-                            <span class="font-display font-bold text-xl text-slate-900 tracking-tight">Lister</span>
-                        </div>
-                        <p class="text-slate-500 max-w-sm mb-6 leading-relaxed">
-                            O ecossistema de produtividade que une a agilidade das To-do lists com a estrutura
-                            estratégica e visual do Kanban.
-                        </p>
-                        <div class="flex items-center gap-4">
-                            <a href="https://github.com/stocaline" target="_blank"
-                                class="w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:bg-indigo-50 hover:text-indigo-600 hover:border-indigo-200 transition-all">
-                                <iconify-icon icon="mdi:github" class="text-xl"></iconify-icon>
-                            </a>
-                            <a href="https://www.linkedin.com/in/richard-de-souza-bercheli/" target="_blank"
-                                class="w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:bg-blue-50 hover:text-blue-500 hover:border-blue-200 transition-all">
-                                <iconify-icon icon="mdi:linkedin" class="text-xl"></iconify-icon>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Quick Links -->
-                    <div>
-                        <h4 class="font-bold text-slate-900 mb-6 uppercase text-sm tracking-wider">Acesso Rápido</h4>
-                        <ul class="space-y-4">
-                            <li><a href="assets/app/lister_0.2.0_x64-setup.exe" download
-                                    class="text-slate-500 hover:text-indigo-600 font-medium transition-colors">Download
-                                    Desktop</a></li>
-                            <li><a href="https://lister-one.vercel.app/" target="_blank"
-                                    class="text-slate-500 hover:text-indigo-600 font-medium transition-colors">Acesso
-                                    Web</a></li>
-                            <li><a href="#features"
-                                    class="text-slate-500 hover:text-indigo-600 font-medium transition-colors">Funcionalidades</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Creator info -->
-                    <div>
-                        <h4 class="font-bold text-slate-900 mb-6 uppercase text-sm tracking-wider">O Projeto</h4>
-                        <ul class="space-y-4 mb-6">
-                            <li><a href="#"
-                                    class="text-slate-500 hover:text-indigo-600 font-medium transition-colors flex items-center gap-2">Reportar
-                                    Bug <iconify-icon icon="solar:bug-bold-duotone"
-                                        class="text-red-400"></iconify-icon></a></li>
-                        </ul>
-                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 mt-2">
-                            <span
-                                class="block text-xs font-semibold text-slate-400 uppercase tracking-widest mb-2">Conheça
-                                o Criador</span>
-                            <a href="https://richardbercheli.com.br/" target="_blank"
-                                class="inline-flex items-center gap-2 text-sm font-bold text-indigo-600 hover:text-indigo-700 group transition-colors">
-                                Ver Portfólio do Dev
-                                <iconify-icon icon="solar:arrow-right-line-duotone"
-                                    class="group-hover:translate-x-1 transition-transform"></iconify-icon>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Copyright -->
-                <div
-                    class="pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4">
-                    <p class="text-slate-500 text-sm font-medium">
-                        &copy; 2026 Lister. Desenvolvido com <iconify-icon icon="solar:heart-bold"
-                            class="text-red-500 mx-1 align-middle"></iconify-icon> para devs.
-                    </p>
-                    <div class="flex items-center gap-6 text-sm font-medium text-slate-400">
-                        <a href="#" class="hover:text-slate-600 transition-colors">Privacidade</a>
-                        <a href="#" class="hover:text-slate-600 transition-colors">Termos de Uso</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-
+<!-- HERO -->
+<header class="hero" id="topo">
+  <div class="hero-left">
+    <a class="wordmark" href="#topo" aria-label="Lister, início">
+      <img src="assets/imgs/lister.svg" alt="" width="36" height="36">LISTER
+    </a>
+    <div class="hero-talk">
+      <p class="lead fade-up">Um kanban local para Windows com cronômetro em cada tarefa. Grátis, sem conta, 3,5&nbsp;MB.</p>
+      <a class="btn btn-primary fade-up" href="https://github.com/stocaline/lister/releases/download/v1.0.0/lister_1.0.0_x64-setup.exe">Baixar a versão 1.0.0</a>
     </div>
+  </div>
+  <div class="hero-right">
+    <nav class="nav" aria-label="Seções">
+      <a href="#timer">Timer</a>
+      <a href="#recursos">Recursos</a>
+      <a href="#como">Como funciona</a>
+      <a href="#claude">Claude</a>
+      <a href="#sobre">Sobre</a>
+      <a href="https://github.com/stocaline/lister">GitHub</a>
+    </nav>
+    <h1 class="display lines">
+      <span class="line"><span data-line style="--i:0">Cada minuto</span></span>
+      <span class="line"><span data-line style="--i:1">conta</span></span>
+    </h1>
+    <figure class="hero-shot">
+      <div class="score-chip fade-up" aria-hidden="true">
+        <span class="score-chip-clock">21h 24m</span>
+        <span class="score-chip-text">contadas no quadro Clientes</span>
+      </div>
+      <div class="hero-shot-frame">
+        <img src="assets/shots/board.png" width="3200" height="1800" alt="O Lister aberto no quadro Clientes: colunas Backlog, Fazendo, Revisão e Entregue, com o cronômetro no topo marcando 3:36:11 na tarefa Tela de checkout do app.">
+      </div>
+    </figure>
+  </div>
+</header>
 
-    <script src="assets/js/main.js"></script>
+<main>
+
+<!-- SHOWCASE: the live thing -->
+<section class="showcase" id="timer" aria-labelledby="timer-title">
+  <h2 id="timer-title" class="sr-only">Experimente o cronômetro</h2>
+  <div class="type-line reveal" data-ui>
+    <label for="task-input" class="sr-only">Escreva uma tarefa</label>
+    <input id="task-input" class="display type-input" value="Revisar proposta" maxlength="60" autocomplete="off" spellcheck="false">
+    <span class="type-measure display" aria-hidden="true"></span>
+    <span class="type-caret" aria-hidden="true"></span>
+  </div>
+
+  <div class="placar-wrap reveal">
+    <div class="placar" data-ui data-placar role="group" aria-label="Cronômetro da tarefa">
+      <span class="placar-tag">Fazendo</span>
+      <span class="placar-name" data-placar-name>Revisar proposta</span>
+      <span class="placar-clock" data-placar-clock aria-live="off">0:00:00</span>
+      <span class="placar-status"><i></i><span data-placar-status>Contando</span></span>
+      <button class="placar-toggle" data-placar-toggle aria-label="Pausar">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>
+      </button>
+    </div>
+    <p class="placar-note">Escreva qualquer tarefa acima e use o botão para pausar ou retomar. No app é o mesmo gesto: um clique no card, e o relógio aparece numa janela pequena que fica por cima de tudo.</p>
+  </div>
+
+  <div class="examples reveal" role="group" aria-label="Exemplos de tarefa">
+    <button class="example" data-example>Lavar a louça</button>
+    <button class="example" data-example>Capítulo 4 de Rust</button>
+    <button class="example" data-example>Fechar o mês da padaria</button>
+  </div>
+</section>
+
+<!-- FEATURES: the command list -->
+<section class="features" id="recursos" aria-labelledby="recursos-title">
+  <h2 id="recursos-title" class="sr-only">Recursos</h2>
+  <div class="cmd" data-ui>
+    <label class="cmd-search reveal">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-3.5-3.5"/></svg>
+      <span class="sr-only">Filtrar recursos</span>
+      <input class="cmd-input" placeholder="Ir para um recurso…" data-cmd-input autocomplete="off">
+    </label>
+    <div class="cmd-body">
+      <ul class="cmd-list" role="listbox" aria-label="Recursos do Lister" data-cmd-list>
+        <li role="option" data-shot="palette" aria-selected="true">
+          <span class="cmd-name">Paleta de comandos</span><span class="keys"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+          <p class="cmd-desc">Pule para qualquer quadro ou tarefa pelo nome, sem tirar a mão do teclado.</p>
+        </li>
+        <li role="option" data-shot="board">
+          <span class="cmd-name">Nova tarefa</span><span class="keys"><kbd>N</kbd></span>
+          <p class="cmd-desc">Cria uma tarefa na primeira coluna do quadro aberto. Arraste cards e colunas para reorganizar.</p>
+        </li>
+        <li role="option" data-shot="board">
+          <span class="cmd-name">Filtrar o quadro</span><span class="keys"><kbd>/</kbd></span>
+          <p class="cmd-desc">Filtra por texto, prioridade e tag, e mostra a soma de tarefas e horas do que sobrou.</p>
+        </li>
+        <li role="option" data-shot="drawer">
+          <span class="cmd-name">Timer flutuante</span>
+          <p class="cmd-desc">Ao dar play, uma janelinha fica sempre por cima e o quadro sai da frente. Pausa e retoma de lá mesmo.</p>
+        </li>
+        <li role="option" data-shot="drawer">
+          <span class="cmd-name">Tags e subtarefas</span>
+          <p class="cmd-desc">Prioridade Baixa, Média ou Alta; tags em 17 cores; subtarefas com barra de progresso; tempo editável à mão.</p>
+        </li>
+        <li role="option" data-shot="notes">
+          <span class="cmd-name">Blocos de notas</span>
+          <p class="cmd-desc">Notas em markdown com checklists, ao lado dos quadros, exportáveis em .md.</p>
+        </li>
+        <li role="option" data-shot="light">
+          <span class="cmd-name">Temas e fontes</span>
+          <p class="cmd-desc">Escuro ou claro, 7 cores de destaque e 5 fontes, incluindo a Atkinson Hyperlegible.</p>
+        </li>
+        <li role="option" data-shot="board">
+          <span class="cmd-name">Skill para o Claude</span>
+          <p class="cmd-desc">Peça ao Claude para criar, mover ou concluir tarefas. <a href="#claude">Veja como</a>.</p>
+        </li>
+      </ul>
+      <figure class="cmd-shots reveal" aria-live="polite">
+        <img data-shot-img="palette" class="on" src="assets/shots/palette.png" width="3200" height="1800" loading="lazy" alt="Paleta de comandos aberta sobre o quadro, listando Clientes, Hoje, Casa, Estudos e o bloco Ideias.">
+        <img data-shot-img="drawer" src="assets/shots/drawer.png" width="3200" height="1800" loading="lazy" alt="Gaveta da tarefa Tela de checkout do app: relógio rodando em 3:36:29, prioridade Alta, tags App e Faturar, e duas de quatro subtarefas feitas.">
+        <img data-shot-img="notes" src="assets/shots/notes.png" width="3200" height="1800" loading="lazy" alt="Bloco de notas Ideias com título, lista, checklist e citação em markdown.">
+        <img data-shot-img="light" src="assets/shots/light.png" width="3200" height="1800" loading="lazy" alt="O Lister no tema claro com a cor de destaque verde: quadro Clientes, cronômetro e colunas em tons claros.">
+        <img data-shot-img="board" src="assets/shots/board.png" width="3200" height="1800" loading="lazy" alt="Quadro Clientes com quatro colunas, horas por coluna e o cronômetro no topo.">
+      </figure>
+    </div>
+    <p class="cmd-empty small" data-cmd-empty hidden>Nenhum recurso com esse nome.</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS: one bar -->
+<section class="how" id="como" aria-labelledby="como-title">
+  <h2 id="como-title" class="head reveal">Um clique, o dia todo</h2>
+  <ol class="bar reveal" data-ui>
+    <li class="seg seg-a" style="--grow:1"><span class="seg-time">Um minuto</span><p>Primeiro, instale. São 3,5 MB e nenhum cadastro.</p></li>
+    <li class="seg seg-b" style="--grow:2"><span class="seg-time">Cinco minutos</span><p>Depois, crie seus quadros e colunas do seu jeito.</p></li>
+    <li class="seg seg-c" style="--grow:9"><span class="seg-time">O dia inteiro</span><p>Então dê play na tarefa e trabalhe. O cronômetro conta por você.</p></li>
+    <li class="seg seg-d" style="--grow:1"><span class="seg-time">Dez segundos</span><p>No fim, leia as horas somadas por coluna e por quadro.</p></li>
+  </ol>
+</section>
+
+<!-- LIST: the poster -->
+<section class="poster" aria-label="O que o Lister é">
+  <ul class="poster-list">
+    <li class="reveal"><span class="poster-word">Local</span><span class="poster-fact">Seus dados ficam no seu computador</span></li>
+    <li class="reveal"><span class="poster-word">Sem conta</span><span class="poster-fact">Abre e usa, sem cadastro</span></li>
+    <li class="reveal"><span class="poster-word">Offline</span><span class="poster-fact">Funciona sem internet</span></li>
+    <li class="reveal"><span class="poster-word">3,5 MB</span><span class="poster-fact">Instalador para Windows x64</span></li>
+    <li class="reveal"><span class="poster-word">Aberto</span><span class="poster-fact">Código no GitHub</span></li>
+    <li class="reveal"><span class="poster-word">Grátis</span><span class="poster-fact">R$ 0, sem plano pago</span></li>
+  </ul>
+  <img class="poster-shot reveal" src="assets/shots/drawer.png" width="3200" height="1800" loading="lazy" alt="Detalhe da gaveta de tarefa do Lister com o relógio rodando e as subtarefas.">
+</section>
+
+<!-- CLAUDE -->
+<section class="claude" id="claude" aria-labelledby="claude-title">
+  <div class="claude-left">
+    <h2 id="claude-title" class="head reveal">Peça ao Claude</h2>
+    <p class="reveal">O Lister vem com uma skill para o Claude Code. Você pede em português e o Claude cria, edita, move e conclui tarefas, mexe em colunas e escreve nos blocos de notas. Ao clicar na janela do Lister, a mudança já está lá.</p>
+    <div class="claude-asks reveal" role="group" aria-label="Pedidos de exemplo">
+      <button class="ask" aria-pressed="true" data-ask="0">Adiciona “comprar café” no Hoje, prioridade alta</button>
+      <button class="ask" aria-pressed="false" data-ask="1">Marca a tela de checkout como feita</button>
+      <button class="ask" aria-pressed="false" data-ask="2">O que falta no quadro Casa?</button>
+    </div>
+    <p class="claude-install small reveal">Para instalar, copie a pasta <a href="https://github.com/stocaline/lister/tree/master/claude-skill/lister">claude-skill/lister</a> do repositório para <code>~/.claude/skills/</code>.</p>
+  </div>
+
+  <div class="claude-right reveal" data-ui>
+    <div class="term">
+      <p class="term-you" data-term-ask>Adiciona “comprar café” no Hoje, prioridade alta</p>
+      <pre class="term-cmd"><code data-term-cmd>python lister.py add hoje "a fazer" "Comprar café" --priority high</code></pre>
+      <pre class="term-out"><code data-term-out>criada: task-1792676112048-0.41</code></pre>
+      <p class="term-claude" data-term-reply>Pronto, “Comprar café” está no topo de A fazer, no quadro Hoje, com prioridade Alta.</p>
+    </div>
+    <div class="mini-col">
+      <div class="mini-head"><span data-mini-col>A fazer</span><span class="mini-count" data-mini-count>3</span></div>
+      <div class="mini-cards" data-mini-cards></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="sobre" aria-labelledby="sobre-title">
+  <div class="about-panel">
+    <div class="about-left">
+      <h2 id="sobre-title" class="head reveal">Feito por quem<br>usa todo dia</h2>
+      <img class="about-photo reveal" src="assets/imgs/dev.png" width="683" height="1024" loading="lazy" alt="Retrato de Richard de Souza Bercheli, criador do Lister.">
+    </div>
+    <div class="about-right">
+      <div class="reveal">
+        <h3 class="sub">Por que existe</h3>
+        <p>O Lister nasceu da frustração de escolher entre listas simples demais e sistemas engessados. A ideia era um quadro que abre na hora, fica aberto o dia inteiro e diz quanto tempo cada tarefa levou.</p>
+      </div>
+      <div class="reveal">
+        <h3 class="sub">Quem fez</h3>
+        <p>Richard de Souza Bercheli, desenvolvedor full stack. Usa o Lister para os projetos de clientes e para as coisas de casa, e cada versão sai desse uso.</p>
+      </div>
+      <a class="btn btn-primary reveal" href="https://richardbercheli.com.br/">Ver o portfólio</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA: first step already open -->
+<section class="cta" aria-labelledby="cta-title">
+  <div class="cta-left">
+    <h2 id="cta-title" class="head reveal">Seu primeiro<br>quadro</h2>
+    <p class="reveal">Instale, abra e o Lister já traz um quadro com a coluna To Do. Dê play na primeira tarefa e o tempo começa a contar.</p>
+  </div>
+  <form class="dialog reveal" data-ui action="https://github.com/stocaline/lister/releases/download/v1.0.0/lister_1.0.0_x64-setup.exe" method="get" data-cta>
+    <p class="dialog-title">Novo quadro</p>
+    <label class="dialog-label" for="board-name">Nome</label>
+    <input id="board-name" class="dialog-input" value="Clientes" maxlength="40" autocomplete="off">
+    <div class="dialog-label" id="kind-label">Tipo</div>
+    <div class="seg-choice" role="radiogroup" aria-labelledby="kind-label">
+      <button type="button" role="radio" aria-checked="true" data-kind>Quadro</button>
+      <button type="button" role="radio" aria-checked="false" data-kind>Bloco de notas</button>
+    </div>
+    <button class="btn btn-primary dialog-go" type="submit">Baixar e criar <span data-cta-name>Clientes</span></button>
+    <p class="dialog-foot">Baixa o instalador 1.0.0 do GitHub (3,5 MB).</p>
+  </form>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div>
+      <p class="head footer-invite reveal">Dê play<br>no seu dia</p>
+      <a class="btn btn-dark reveal" href="https://github.com/stocaline/lister/releases/download/v1.0.0/lister_1.0.0_x64-setup.exe">Baixar o Lister</a>
+    </div>
+    <ul class="footer-links">
+      <li><a href="https://github.com/stocaline/lister">Código no GitHub</a></li>
+      <li><a href="https://github.com/stocaline/lister/releases">Todas as versões</a></li>
+      <li><a href="https://github.com/stocaline/lister/issues">Reportar um bug</a></li>
+      <li><a href="https://www.linkedin.com/in/richard-de-souza-bercheli/">LinkedIn do criador</a></li>
+    </ul>
+  </div>
+  <div class="footer-legal small">
+    <span>© <span data-year>2026</span> Lister, por Richard de Souza Bercheli</span>
+    <span>Versão 1.0.0 · Windows x64</span>
+  </div>
+  <p class="footer-name" aria-hidden="true">LISTER</p>
+</footer>
+
+<script src="assets/js/main.js"></script>
 </body>
-
 </html>
